@@ -27,11 +27,11 @@ public static class PlayerState
         return currentPower;
     }
     public static void ChangeLife(float value) {
-        Mathf.Clamp(currentLife += value, 0, maxLife);
+        currentLife = Mathf.Clamp(currentLife + value, 0, maxLife);
     }
 
     public static void ChangePower(float value) {
-        Mathf.Clamp(currentPower += value, 0, maxPower);
+        currentPower = Mathf.Clamp(currentPower + value, 0, maxPower);
     }
 
 }
