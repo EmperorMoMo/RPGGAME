@@ -7,17 +7,20 @@ public class PlayerInput : MonoBehaviour
 {
     public string keyA;
     public string keyB;
+    public string keyC;
 
     public float rollSpeed = 6.0f;//物体的移动速度
     public float rotateSpeed = 4.0f;//物体的旋转速度
     public float gravity = 20.0f;
     public float jumpSpeed = 8.0f;
-    public float runSpeed = 2.0f;
+    public float duckSpeed = 3.0f;
 
     public CharacterController controller;
 
     private bool inputEnable = true;
     private bool isGround = true;
+    private bool isJump = true;
+    private bool isRun = true;
 
     private Vector3 rotateDirection = Vector3.zero;
     private Vector3 moveDirection = Vector3.zero;
@@ -54,27 +57,48 @@ public class PlayerInput : MonoBehaviour
                 //{
                 //    rotateDirection = new Vector3(0, 0, 0);
                 //}
-
-                if (Input.GetKey(keyB))
+                if (isRun)
                 {
-                    rollSpeed = Mathf.Lerp(rollSpeed, 10.0f, 1.0f);
+                    if (Input.GetKey(keyB))
+                    {
+                        rollSpeed = Mathf.Lerp(rollSpeed, 10.0f, 1.0f);
+                    }
+                    else
+                    {
+                        rollSpeed = Mathf.Lerp(rollSpeed, 6.0f, 1.0f);
+                    }
+                }
+            }
+
+            if (isJump)
+            {
+                if (Input.GetKeyDown(keyA))
+                {
+                    moveDirection.y = jumpSpeed;
+                    inputEnable = false;
                 }
                 else
                 {
-                    rollSpeed = Mathf.Lerp(rollSpeed, 6.0f, 1.0f);
+                    inputEnable = true;
                 }
             }
 
-            if (Input.GetKeyDown(keyA))
+            if (Input.GetKey(keyC))
             {
-                moveDirection.y = jumpSpeed;
-                inputEnable = false;
+                rollSpeed = duckSpeed;
+                controller.height = 1;
+                controller.center = new Vector3(0, 0.79f, 0);
+                isJump = false;
+                isRun = false;
             }
-            else
+            else if(Input.GetKeyUp(keyC))
             {
-                inputEnable = true;
+                rollSpeed = 6.0f;
+                controller.height = 2;
+                controller.center = new Vector3(0, 1.1f, 0);
+                isJump = true;
+                isRun = true;
             }
-            
         }
 
         moveDirection.y -= gravity * Time.deltaTime;
@@ -83,4 +107,5 @@ public class PlayerInput : MonoBehaviour
         controller.transform.Rotate(rotateDirection * Time.deltaTime, rotateSpeed);
         isGround = ((flags & CollisionFlags.Below) != 0);//判断是否在地面，如果在地面，isGround为真，否则为假
     }
+    
 }
