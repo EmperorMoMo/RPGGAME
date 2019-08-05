@@ -9,20 +9,30 @@ public class UIManager : MonoBehaviour {
     public static Text lifePackText;
     public static Text powerPackText;
 
-    private static float maxLife;
-    private static float maxPower;
+    public static float targetLifeValue = 1f;
+    public static float targetPowerValue = 1f;
     void Start() { 
     
+    }
+
+    void Update() {
+        if (targetLifeValue != lifeSlider.value) {
+            lifeSlider.value = Mathf.Lerp(lifeSlider.value, targetLifeValue, 1f);
+        }
+
+        if (targetPowerValue != powerSlider.value) {
+            lifeSlider.value = Mathf.Lerp(powerSlider.value, targetPowerValue, 1f);
+        }
     }
     public void ButtonPack_Click(string pack) {
         switch (pack) { 
             case "Life":
                 Debug.Log("Life");
-                UI_ChangeLife(0);
+                //UI_ChangeLife(0);
                 break;
             case "Power":
                 Debug.Log("Power");
-                UI_ChangePowerUI(0);
+                //UI_ChangePowerUI(0);
                 break;
             default:
                 Debug.Log("other");
@@ -30,28 +40,20 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    void UI_ChangeLife(int value) { 
-    
-    }
-
-    void UI_ChangePowerUI(int value) { 
-    
-    }
-
     public static void UI_UpdataLifeValue(float currentLife) {
-        lifeSlider.value = currentLife / maxLife;
+        targetLifeValue = currentLife / PlayerState.GetMaxLife();
     }
 
     public static void UI_UpdataPowerValue(float currentPower) {
-        powerSlider.value = currentPower / maxPower;
+        targetPowerValue = currentPower / PlayerState.GetMaxPower();
     }
 
-    public static void UI_UpdataLifePack(int value) {
-        lifePackText.text = value.ToString();
-    }
+    //public static void UI_UpdataLifePack(int value) {
+    //    lifePackText.text = value.ToString();
+    //}
 
-    public static void UI_UpdataPowerPack(int value) {
-        powerPackText.text = value.ToString();
+    //public static void UI_UpdataPowerPack(int value) {
+    //    powerPackText.text = value.ToString();
         
-    }
+    //}
 }

@@ -28,10 +28,11 @@ public static class PlayerState
     }
     public static void ChangeLife(float value) {
         currentLife = Mathf.Clamp(currentLife + value, 0, maxLife);
+        UIManager.UI_UpdataLifeValue(currentLife);
     }
 
     public static void ChangePower(float value) {
         currentPower = Mathf.Clamp(currentPower + value, 0, maxPower);
+        UIManager.UI_UpdataPowerValue(currentPower);
     }
-
 }
