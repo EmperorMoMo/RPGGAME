@@ -72,7 +72,6 @@ public class EBunny_AIController : MonoBehaviour
     IEnumerator Attack()
     {
         isAttacking = true;
-        animation.Play("WolfBaby-Attack1");
         transform.LookAt(target);
         Vector3 direction = transform.TransformDirection(Vector3.forward * attackMoveSpeed);
         characterController.SimpleMove(direction);
@@ -82,6 +81,7 @@ public class EBunny_AIController : MonoBehaviour
             Vector3 location = transform.TransformPoint(attackPosition) - target.position;//计算玩家的距离
             if(Time.time>lastAttackTime+2.0f&&location.magnitude<attackRadius)
             {
+                animation.Play("WolfBaby-Attack1");
                 target.SendMessage("ApplyDamage",damage);
                 lastAttackTime = Time.time;
             }
