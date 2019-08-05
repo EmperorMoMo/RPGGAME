@@ -16,7 +16,7 @@ public static class PlayerState
     }
 
     public static float GetCurrentLife() {
-        return currentPower;
+        return currentLife;
     }
 
     public static float GetMaxPower() {
@@ -27,11 +27,11 @@ public static class PlayerState
         return currentPower;
     }
     public static void ChangeLife(float value) {
-        Mathf.Lerp(0, maxLife, currentLife += value);
+        currentLife = Mathf.Clamp(currentLife + value, 0, maxLife);
     }
 
     public static void ChangePower(float value) {
-        Mathf.Lerp(0, maxPower, currentPower += value);
+        currentPower = Mathf.Clamp(currentPower + value, 0, maxPower);
     }
 
 }
