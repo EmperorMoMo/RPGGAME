@@ -1,38 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerInput : MonoBehaviour
 {
-    public GameObject model;
+    public float rollSpeed = 6.0f;//物体的移动速度
+    public float rotateSpeed = 4.0f;//物体的旋转速度
+    public float gravity = 20.0f;
+    public CharacterController controller;
 
-    public string keyUp = "w";
-    public string keyDown = "s";
-    public string keyLeft = "a";
-    public string keyRight = "d";
-
-    public float Dup;
-    public float Dright;
-
-    private float targetDup;        //目标值Dup
-    private float targetDright;     //目标值Dright
-    private float velocityDup;      //过渡值Dup（SmoothDamp方法中的转换速度,SmoothDamp方法会根据最后的时间参数自行计算）
-    private float velocityDright; 
-
+    private bool isGround = true;
+    private Vector3 rotateDirection = Vector3.zero;
+    private Vector3 moveDirection = Vector3.zero;
 
     // Start is called before the first frame update
     void Awake()
     {
-        
+        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        targetDup = ((Input.GetKey(keyUp) ? 1.0f : 0.0f) - (Input.GetKey(keyDown) ? 1.0f : 0.0f));
-        targetDright = ((Input.GetKey(keyLeft) ? 1.0f : 0.0f) - (Input.GetKey(keyRight) ? 1.0f : 0.0f));
-        Vector3 walk = new Vector3(targetDup, targetDright, 0);
-        model.transform.position = walk;
+        if (isGround)
+        {
+            float h = Input.GetAxis("Horizontal");
+            float v = Input.GetAxis("Vertical");
+            moveDirection = new Vector3(h, 0, v);
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= rollSpeed;
 
+            if (h > 0)
+            {
+                rotateDirection = Vector3.Lerp(rotateDirection, new Vector3(0, 1, 0), 0.5f);
+            }
+            else if (h < 0)
+            {
+                rotateDirection = Vector3.Lerp(rotateDirection, new Vector3(0, -1, 0), 0.5f);
+            }
+            else
+            {
+                rotateDirection = new Vector3(0, 0, 0);
+            }
+        }
+
+        moveDirection.y -= gravity * Time.deltaTime;
+
+        CollisionFlags flags = controller.Move(moveDirection * Time.deltaTime);
+        controller.transform.Rotate(rotateDirection * Time.deltaTime, rotateSpeed);
+        isGround = ((flags & CollisionFlags.Below) != 0);//判断是否在地面，如果在地面，isGround为真，否则为假
     }
 }
