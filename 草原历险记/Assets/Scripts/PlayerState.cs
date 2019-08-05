@@ -9,7 +9,7 @@ public static class PlayerState
     private static float currentLife = 100;
     private static float currentPower = 100;
     private static int lifePack = 2;
-    private static int powerPack = 1;
+    private static int powerPack = 2;
 
     public static float GetMaxLife() {
         return maxLife;
@@ -26,6 +26,14 @@ public static class PlayerState
     public static float GetCurrentPower() {
         return currentPower;
     }
+
+    public static int GetLifePack() {
+        return lifePack;
+    }
+
+    public static int GetPowerPack() {
+        return powerPack;
+    }
     public static void ChangeLife(float value) {
         currentLife = Mathf.Clamp(currentLife + value, 0, maxLife);
         UIManager.UI_UpdataLifeValue(currentLife);
@@ -40,9 +48,13 @@ public static class PlayerState
         if (lifePack > 0 && currentLife != maxLife) {
             ChangeLife(20f);
             lifePack--;
-            //UIManager.
         }
     }
 
-    public static void ClickPowerPack() { }
+    public static void ClickPowerPack() {
+        if (powerPack > 0 && currentPower != maxPower) {
+            ChangePower(20f);
+            powerPack--;
+        }
+    }
 }
