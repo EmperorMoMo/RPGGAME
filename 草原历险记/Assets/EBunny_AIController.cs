@@ -26,15 +26,15 @@ public class EBunny_AIController : MonoBehaviour
         animation.wrapMode = WrapMode.Loop;
         animation["EBunny_Death"].wrapMode = WrapMode.Once;
         animation["EBunny_Death"].layer = 5;
-        animation["EBunny_Attack"].layer = 1;
         animation["EBunny_Hit"].layer = 3;
-        InitEnemy();
+        animation["EBunny_Attack"].layer = 1;
+        StartCoroutine (InitEnemy());
     }
-    void InitEnemy()
+    IEnumerator InitEnemy()
     {
         while (true)
         {
-            StartCoroutine( Idle());
+            yield return StartCoroutine( Idle());
             Attack();
         }
     }
@@ -59,8 +59,8 @@ public class EBunny_AIController : MonoBehaviour
             {
                 yield break;
             }
+            yield return null;
         }
-        yield return null;
     }
     void Attack()
     {
