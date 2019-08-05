@@ -35,4 +35,14 @@ public static class PlayerState
         currentPower = Mathf.Clamp(currentPower + value, 0, maxPower);
         UIManager.UI_UpdataPowerValue(currentPower);
     }
+
+    public static void ClickLifePack() {
+        if (lifePack > 0 && currentLife != maxLife) {
+            ChangeLife(20f);
+            lifePack--;
+            //UIManager.
+        }
+    }
+
+    public static void ClickPowerPack() { }
 }

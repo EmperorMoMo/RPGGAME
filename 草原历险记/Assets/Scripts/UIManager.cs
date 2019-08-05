@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class UIManager : MonoBehaviour {
     public Slider lifeSlider;
     public Slider powerSlider;
-    public static Text lifePackText;
-    public static Text powerPackText;
+    public Text lifePackText;
+    public Text powerPackText;
 
     public static float targetLifeValue = 1f;
     public static float targetPowerValue = 1f;
+    public static int lifePackCount = 2;
+    public static int PowerPackCount = 2;
     void Start() {
     }
 
@@ -22,6 +25,7 @@ public class UIManager : MonoBehaviour {
         if (targetPowerValue != powerSlider.value) {
             powerSlider.value = Mathf.Lerp(powerSlider.value, targetPowerValue, 0.2f);
         }
+        //Convert.ToInt32(lifePackText.text.ToString())
     }
     public void ButtonPack_Click(string pack) {
         switch (pack) { 
@@ -47,12 +51,11 @@ public class UIManager : MonoBehaviour {
         targetPowerValue = currentPower / PlayerState.GetMaxPower();
     }
 
-    //public static void UI_UpdataLifePack(int value) {
-    //    lifePackText.text = value.ToString();
-    //}
+    public static void UI_UpdataLifePack(int value) {
+        lifePackCount = value;
+    }
 
-    //public static void UI_UpdataPowerPack(int value) {
-    //    powerPackText.text = value.ToString();
-        
-    //}
+    public static void UI_UpdataPowerPack(int value) {
+        PowerPackCount = value;
+    }
 }
