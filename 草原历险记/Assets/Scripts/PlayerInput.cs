@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour
     public float timer = 0f;
 
     public CharacterController controller;
-
+    
     private bool inputEnable = true;
     private bool isGround = true;
     private bool isJump = true;
@@ -59,21 +59,34 @@ public class PlayerInput : MonoBehaviour
                 //{
                 //    rotateDirection = new Vector3(0, 0, 0);
                 //}
+
+                if (timer % 50 == 0 && rollSpeed == 6.0f)
+                {
+                    PlayerState.ChangePower(10.0f);
+                    Debug.Log(PlayerState.GetCurrentPower().ToString());
+                }
+
+                if (Input.GetKeyUp(keyB))
+                {
+                    isRun = true;
+                }
+
                 if (isRun)
                 {
                     if (Input.GetKey(keyB) && PlayerState.GetCurrentPower() > 0)
                     {
                         rollSpeed = Mathf.Lerp(rollSpeed, 12.0f, 1.0f);
                         
-                        if (timer % 50 == 0)
+                        if (timer % 50 == 0 && isRun == true)
                         {
                             PlayerState.ChangePower(-10.0f);
                             Debug.Log(PlayerState.GetCurrentPower().ToString());
                         }
                     }
-                    else
+                    else if(PlayerState.GetCurrentPower()==0)
                     {
                         rollSpeed = Mathf.Lerp(rollSpeed, 6.0f, 1.0f);
+                        isRun = false;
                     }
                     //Debug.Log("此时速度为：" + rollSpeed);
                 }
