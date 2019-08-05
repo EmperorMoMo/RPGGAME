@@ -2279,6 +2279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: widget
       objectReference: {fileID: 0}
+    - target: {fileID: 100042, guid: 02dc26b51c376a4479d4e3b350e93523, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: 02dc26b51c376a4479d4e3b350e93523, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.08
@@ -4026,7 +4030,7 @@ MonoBehaviour:
   walkSpeed: 3
   rotateSpeed: 30
   attackRadius: 5
-  target: {fileID: 0}
+  target: {fileID: 575908413}
   isAttacking: 0
   directionTraveltime: 2
   idleTime: 1.5

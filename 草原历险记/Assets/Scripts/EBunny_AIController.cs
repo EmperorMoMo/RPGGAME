@@ -46,6 +46,7 @@ public class EBunny_AIController : MonoBehaviour
     }
     IEnumerator Idle()
     {
+        animation.Play("EBunny_Idle");
         while(true)
         {
             if(Time.time>timeToNewDirection)//到了转换方向的时间
