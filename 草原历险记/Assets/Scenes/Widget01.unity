@@ -4550,13 +4550,11 @@ MonoBehaviour:
   attackDistance: 15
   walkSpeed: 3
   rotateSpeed: 30
-<<<<<<< HEAD
-  target: {fileID: 575908413}
-=======
+
   attackRadius: 5
   target: {fileID: 575908413}
   isAttacking: 0
->>>>>>> 8313570a916755c2f1fb6019b60cd18a1bca989c
+  8313570a916755c2f1fb6019b60cd18a1bca989c
   directionTraveltime: 2
   idleTime: 1.5
   attackPosition: {x: 0, y: 1, z: 0}
