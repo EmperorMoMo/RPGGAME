@@ -2623,9 +2623,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae435c5a5787bf4b82fd121b97121f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyA: space
+  keyB: left shift
   rollSpeed: 6
-  rotateSpeed: 4
+  rotateSpeed: 3
   gravity: 20
+  jumpSpeed: 8
+  runSpeed: 2
   controller: {fileID: 0}
 --- !u!143 &575908415
 CharacterController:
@@ -2644,7 +2648,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.1, z: 0}
 --- !u!1001 &594932706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4579,9 +4583,11 @@ MonoBehaviour:
   attackDistance: 15
   walkSpeed: 3
   rotateSpeed: 30
+
   attackRadius: 5
   target: {fileID: 575908413}
   isAttacking: 0
+  8313570a916755c2f1fb6019b60cd18a1bca989c
   directionTraveltime: 2
   idleTime: 1.5
   attackPosition: {x: 0, y: 1, z: 0}
