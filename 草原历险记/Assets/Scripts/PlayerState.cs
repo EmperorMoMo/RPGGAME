@@ -31,7 +31,6 @@ public static class PlayerState
     }
 
     public static void ChangePower(float value) {
-        Mathf.Lerp(0, maxPower, currentPower += value);
         Mathf.Clamp(currentPower += value, 0, maxPower);
     }
 
