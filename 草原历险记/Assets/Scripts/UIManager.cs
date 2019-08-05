@@ -4,24 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
-    public static Slider lifeSlider;
-    public static Slider powerSlider;
+    public Slider lifeSlider;
+    public Slider powerSlider;
     public static Text lifePackText;
     public static Text powerPackText;
 
     public static float targetLifeValue = 1f;
     public static float targetPowerValue = 1f;
-    void Start() { 
-    
+    void Start() {
     }
 
     void Update() {
         if (targetLifeValue != lifeSlider.value) {
-            lifeSlider.value = Mathf.Lerp(lifeSlider.value, targetLifeValue, 1f);
+            lifeSlider.value = Mathf.Lerp(lifeSlider.value, targetLifeValue, 0.2f);
         }
 
         if (targetPowerValue != powerSlider.value) {
-            lifeSlider.value = Mathf.Lerp(powerSlider.value, targetPowerValue, 1f);
+            powerSlider.value = Mathf.Lerp(powerSlider.value, targetPowerValue, 0.2f);
         }
     }
     public void ButtonPack_Click(string pack) {

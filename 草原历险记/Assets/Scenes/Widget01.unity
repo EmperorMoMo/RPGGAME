@@ -1810,6 +1810,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6808187140915685735, guid: 2afc0fe538e12fd46bdc15710e02a4b9,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6808187140588535949, guid: 2afc0fe538e12fd46bdc15710e02a4b9,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1818,6 +1823,11 @@ PrefabInstance:
     - target: {fileID: 6808187140588535949, guid: 2afc0fe538e12fd46bdc15710e02a4b9,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808187142278836683, guid: 2afc0fe538e12fd46bdc15710e02a4b9,
+        type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6808187140636570632, guid: 2afc0fe538e12fd46bdc15710e02a4b9,
@@ -2553,6 +2563,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 02dc26b51c376a4479d4e3b350e93523, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: 02dc26b51c376a4479d4e3b350e93523, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.08
@@ -2597,10 +2611,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 02dc26b51c376a4479d4e3b350e93523, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02dc26b51c376a4479d4e3b350e93523, type: 3}
 --- !u!1 &575908412 stripped
@@ -2635,6 +2645,7 @@ MonoBehaviour:
   gravity: 20
   jumpSpeed: 8
   duckSpeed: 3
+  timer: 0
   controller: {fileID: 0}
 --- !u!143 &575908415
 CharacterController:
@@ -3930,6 +3941,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3633627633781017143, guid: 8097af6772320ed40a0820f8be747a90,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3633627633196958763, guid: 8097af6772320ed40a0820f8be747a90,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -3938,6 +3954,11 @@ PrefabInstance:
     - target: {fileID: 3633627633196958763, guid: 8097af6772320ed40a0820f8be747a90,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633627633010712896, guid: 8097af6772320ed40a0820f8be747a90,
+        type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3633627633836561936, guid: 8097af6772320ed40a0820f8be747a90,
