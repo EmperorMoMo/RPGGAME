@@ -52,5 +52,6 @@ public class UIManager : MonoBehaviour {
 
     public static void UI_UpdataPowerPack(int value) {
         powerPackText.text = value.ToString();
+        
     }
 }

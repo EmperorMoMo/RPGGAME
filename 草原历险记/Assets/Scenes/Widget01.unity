@@ -3945,6 +3945,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3633627634247474285, guid: 8097af6772320ed40a0820f8be747a90,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 111.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633627634247474285, guid: 8097af6772320ed40a0820f8be747a90,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 76.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633627634247474282, guid: 8097af6772320ed40a0820f8be747a90,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dfbb66a41514a2d48882d667f58d6c95,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8097af6772320ed40a0820f8be747a90, type: 3}
 --- !u!224 &847266477 stripped
@@ -4566,31 +4582,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1027521743}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1027521745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027521744}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6767a0afe2279c7488202130bca7163a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  attackMoveSpeed: 5
-  attackDistance: 15
-  walkSpeed: 3
-  rotateSpeed: 30
-
-  attackRadius: 5
-  target: {fileID: 575908413}
-  isAttacking: 0
-  8313570a916755c2f1fb6019b60cd18a1bca989c
-  directionTraveltime: 2
-  idleTime: 1.5
-  attackPosition: {x: 0, y: 1, z: 0}
 --- !u!143 &1027521746
 CharacterController:
   m_ObjectHideFlags: 0
