@@ -14,6 +14,7 @@ public class PlayerInput : MonoBehaviour
     public float gravity = 20.0f;
     public float jumpSpeed = 8.0f;
     public float duckSpeed = 3.0f;
+    public float timer = 0f;
 
     public CharacterController controller;
 
@@ -34,6 +35,7 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        timer++;
         if (isGround)
         {
             if (inputEnable == true)
@@ -59,14 +61,21 @@ public class PlayerInput : MonoBehaviour
                 //}
                 if (isRun)
                 {
-                    if (Input.GetKey(keyB))
+                    if (Input.GetKey(keyB) && PlayerState.GetCurrentPower() > 0)
                     {
-                        rollSpeed = Mathf.Lerp(rollSpeed, 10.0f, 1.0f);
+                        rollSpeed = Mathf.Lerp(rollSpeed, 12.0f, 1.0f);
+                        
+                        if (timer % 50 == 0)
+                        {
+                            PlayerState.ChangePower(-10.0f);
+                            Debug.Log(PlayerState.GetCurrentPower().ToString());
+                        }
                     }
                     else
                     {
                         rollSpeed = Mathf.Lerp(rollSpeed, 6.0f, 1.0f);
                     }
+                    //Debug.Log("此时速度为：" + rollSpeed);
                 }
             }
 
