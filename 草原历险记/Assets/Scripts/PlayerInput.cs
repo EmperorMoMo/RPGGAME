@@ -37,22 +37,23 @@ public class PlayerInput : MonoBehaviour
             {
                 float h = Input.GetAxis("Horizontal");
                 float v = Input.GetAxis("Vertical");
-                moveDirection = new Vector3(h, 0, v);
+                moveDirection = new Vector3(0, 0, v);
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= rollSpeed;
 
-                if (h > 0)
-                {
-                    rotateDirection = Vector3.Lerp(rotateDirection, new Vector3(0, 1, 0), 1f);
-                }
-                else if (h < 0)
-                {
-                    rotateDirection = Vector3.Lerp(rotateDirection, new Vector3(0, -1, 0), 1f);
-                }
-                else
-                {
-                    rotateDirection = new Vector3(0, 0, 0);
-                }
+                rotateDirection = Vector3.Lerp(rotateDirection, new Vector3(0, h, 0), 1f);
+                //if (h > 0)
+                //{
+                //    rotateDirection = Vector3.Lerp(rotateDirection, new Vector3(0, 1, 0), 1f);
+                //}
+                //else if (h < 0)
+                //{
+                //    rotateDirection = Vector3.Lerp(rotateDirection, new Vector3(0, -1, 0), 1f);
+                //}
+                //else
+                //{
+                //    rotateDirection = new Vector3(0, 0, 0);
+                //}
 
                 if (Input.GetKey(keyB))
                 {
@@ -64,7 +65,7 @@ public class PlayerInput : MonoBehaviour
                 }
             }
 
-            if (Input.GetKey(keyA))
+            if (Input.GetKeyDown(keyA))
             {
                 moveDirection.y = jumpSpeed;
                 inputEnable = false;

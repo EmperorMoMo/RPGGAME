@@ -30,10 +30,10 @@ public class EBunny_AIController : MonoBehaviour
             target = GameObject.FindWithTag("Player").transform;
         }
         animation.wrapMode = WrapMode.Loop;
-        animation["EBunny_Death"].wrapMode = WrapMode.Once;
-        animation["EBunny_Death"].layer = 5;
-        animation["EBunny_Hit"].layer = 3;
-        animation["EBunny_Attack"].layer = 1;
+        animation["WolfBaby-Death"].wrapMode = WrapMode.Once;
+        animation["WolfBaby-Death"].layer = 5;
+        animation["WolfBaby-TakeDamage1"].layer = 3;
+        animation["WolfBaby-Attack1"].layer = 1;
         StartCoroutine (InitEnemy());
     }
     IEnumerator InitEnemy()
@@ -46,7 +46,8 @@ public class EBunny_AIController : MonoBehaviour
     }
     IEnumerator Idle()
     {
-        while(true)
+        animation.Play("WolfBaby-Walk");
+        while (true)
         {
             if(Time.time>timeToNewDirection)//到了转换方向的时间
             {
@@ -71,7 +72,7 @@ public class EBunny_AIController : MonoBehaviour
     IEnumerator Attack()
     {
         isAttacking = true;
-        animation.Play("EBunny_Attack");
+        animation.Play("WolfBaby-Attack1");
         transform.LookAt(target);
         Vector3 direction = transform.TransformDirection(Vector3.forward * attackMoveSpeed);
         characterController.SimpleMove(direction);
@@ -87,6 +88,7 @@ public class EBunny_AIController : MonoBehaviour
             if(location.magnitude>attackRadius)
             {
                 lostSight = true;
+                animation.Stop("WolfBaby-Attack1");
                 yield break;
             }
             yield return null;
