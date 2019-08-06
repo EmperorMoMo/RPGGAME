@@ -66,7 +66,7 @@ public class PlayerInput : MonoBehaviour
                     Debug.Log(PlayerState.GetCurrentPower().ToString());
                 }
 
-                if (Input.GetKeyUp(keyB))
+                if (PlayerState.GetCurrentPower()>=50)
                 {
                     isRun = true;
                 }
@@ -88,7 +88,6 @@ public class PlayerInput : MonoBehaviour
                         rollSpeed = Mathf.Lerp(rollSpeed, 6.0f, 1.0f);
                         isRun = false;
                     }
-                    //Debug.Log("此时速度为：" + rollSpeed);
                 }
             }
 
@@ -98,6 +97,7 @@ public class PlayerInput : MonoBehaviour
                 {
                     moveDirection.y = jumpSpeed;
                     inputEnable = false;
+                    PlayerState.ChangePower(-10.0f);
                 }
                 else
                 {
