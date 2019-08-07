@@ -8,8 +8,8 @@ public static class PlayerState
     private static float maxPower = 100;
     private static float currentLife = 100;
     private static float currentPower = 100;
-    private static int lifePack = 2;
-    private static int powerPack = 2;
+    private static int lifePack = 99;
+    private static int powerPack = 99;
 
     private static Transform saveTran = null;
 
