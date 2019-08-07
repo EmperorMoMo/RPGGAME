@@ -89,7 +89,7 @@ public class PlayerInput : MonoBehaviour
                     {
                         rollSpeed = Mathf.Lerp(rollSpeed, 12.0f, 1.0f);
 
-                        if (timer % 50 == 0 && isRun == true)
+                        if (timer % 50 == 0 && isRun == true&&Input.GetButton("Vertical"))
                         {
                             PlayerState.ChangePower(-10.0f);
                             Debug.Log(PlayerState.GetCurrentPower().ToString());
@@ -105,7 +105,7 @@ public class PlayerInput : MonoBehaviour
 
             if (isJump)
             {
-                if (Input.GetKeyDown(keyB))
+                if (Input.GetKeyDown(keyB)&&PlayerState.GetCurrentPower()!=0)
                 {
                     moveDirection.y = jumpSpeed;
                     inputEnable = false;
