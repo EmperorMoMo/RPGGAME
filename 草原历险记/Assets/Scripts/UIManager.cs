@@ -4,15 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+[Serializable]
 public class UIManager : MonoBehaviour {
     public Slider lifeSlider;
     public Slider powerSlider;
     public Text lifePackText;
     public Text powerPackText;
+    public Transform startLifePoint;
+    public Transform startPowerPoint;
+    public Transform endPoint;
+    public GameObject lifeMoveEffect;
+    public GameObject powerMoveEffect;
 
     public static float targetLifeValue = 1f;
     public static float targetPowerValue = 1f;
+
+    static Transform _startLifePoint;
+    static Transform _startPowerPoint;
+    static GameObject _lifeMoveEffect;
+    static GameObject _powerMoveEffect;
+
+    static GameObject lmf;
+    static GameObject pmf;
     void Start() {
+        _startLifePoint = startLifePoint;
+        _startPowerPoint = startPowerPoint;
+        _lifeMoveEffect = lifeMoveEffect;
+        _powerMoveEffect = powerMoveEffect;
     }
 
     void Update() {
@@ -30,6 +48,14 @@ public class UIManager : MonoBehaviour {
 
         if (Convert.ToInt32(powerPackText.text.ToString()) != PlayerState.GetPowerPack()) {
             powerPackText.text =  PlayerState.GetPowerPack().ToString();
+        }
+
+        if (lmf != null) {
+            lmf.transform.position = Vector3.MoveTowards(lmf.transform.position, endPoint.position, 80 * Time.deltaTime);
+        }
+
+        if (pmf != null) {
+            pmf.transform.position = Vector3.MoveTowards(pmf.transform.position, endPoint.position, 80 * Time.deltaTime);
         }
     }
     public void ButtonPack_Click(string pack) {
@@ -55,4 +81,13 @@ public class UIManager : MonoBehaviour {
     public static void UI_UpdataPowerValue(float currentPower) {
         targetPowerValue = currentPower / PlayerState.GetMaxPower();
     }
+
+    public static void PlayLifeEffect() {
+        lmf = GameObject.Instantiate(_lifeMoveEffect, _startLifePoint);
+    }
+
+    public static void PlayPowerEffect() {
+        pmf = GameObject.Instantiate(_powerMoveEffect, _startPowerPoint);
+    }
+
 }

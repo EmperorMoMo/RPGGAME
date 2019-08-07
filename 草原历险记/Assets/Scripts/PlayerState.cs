@@ -11,6 +11,8 @@ public static class PlayerState
     private static int lifePack = 2;
     private static int powerPack = 2;
 
+    private static Transform saveTran = null;
+
     public static float GetMaxLife() {
         return maxLife;
     }
@@ -48,6 +50,7 @@ public static class PlayerState
         if (lifePack > 0 && currentLife != maxLife) {
             ChangeLife(20f);
             lifePack--;
+            UIManager.PlayLifeEffect();
         }
     }
 
@@ -55,6 +58,19 @@ public static class PlayerState
         if (powerPack > 0 && currentPower != maxPower) {
             ChangePower(20f);
             powerPack--;
+            UIManager.PlayPowerEffect();
         }
+    }
+
+    public static void SavePoint(Transform trans) {
+        saveTran.position = trans.position;
+    }
+
+    public static void Resurrection() { 
+        
+    }
+
+    public static void Die() { 
+    
     }
 }
