@@ -107,18 +107,21 @@ public class PlayerInput : MonoBehaviour
             {
                 if (Input.GetKeyDown(keyB)&&PlayerState.GetCurrentPower()!=0)
                 {
+                    anim.SetBool("IsJump",true);
                     moveDirection.y = jumpSpeed;
                     inputEnable = false;
                     PlayerState.ChangePower(-10.0f);
                 }
                 else
                 {
+                    anim.SetBool("IsJump",false);
                     inputEnable = true;
                 }
             }
 
             if (Input.GetKey(keyC))
             {
+                anim.SetBool("IsDuck", true);
                 rollSpeed = duckSpeed;
                 controller.height = 1;
                 controller.center = new Vector3(0, 0.79f, 0);
@@ -127,6 +130,7 @@ public class PlayerInput : MonoBehaviour
             }
             else if (Input.GetKeyUp(keyC))
             {
+                anim.SetBool("IsDuck", false);
                 rollSpeed = 6.0f;
                 controller.height = 2;
                 controller.center = new Vector3(0, 1.1f, 0);
