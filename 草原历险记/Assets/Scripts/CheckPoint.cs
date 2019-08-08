@@ -17,8 +17,8 @@ public class CheckPoint : MonoBehaviour
         {
             isActivept = this;
         }
-        PlayerState.ChangeLife(PlayerState.GetMaxLife());
-        PlayerState.ChangePower(PlayerState.GetMaxPower());
+        PlayerState.GetMaxLife();
+        PlayerState.GetMaxPower();
     }
     // Update is called once per frame
     void Update()

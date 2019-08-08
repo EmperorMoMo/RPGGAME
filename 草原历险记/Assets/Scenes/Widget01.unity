@@ -1319,7 +1319,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: -100
-  PI: {fileID: 0}
 --- !u!65 &227018089
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1332,7 +1331,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.9999993, y: 0, z: 1.9999988}
-  m_Center: {x: -0.00000032782555, y: 0.05, z: 0.00000032782555}
+  m_Center: {x: -0.00000032782555, y: 0.3, z: 0.00000032782555}
 --- !u!1001 &235561021
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -151,6 +151,11 @@ public class PlayerInput : MonoBehaviour
             yield return StartCoroutine(waitForDie());
             HideCharacter();
             yield return StartCoroutine(waitForOneSeconds());
+            if (CheckPoint.isActivept)
+            {
+                controller.transform.position = CheckPoint.isActivept.transform.position;
+                controller.transform.position = new Vector3(controller.transform.position.x, controller.transform.position.y + 0.5f, controller.transform.position.z);
+            }
             ShowCharacter();
             PlayerState.ChangeLife(PlayerState.GetMaxLife());
         }
