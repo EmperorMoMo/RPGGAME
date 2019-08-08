@@ -139,14 +139,10 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.B))
-        {
-            PlayerState.ChangeLife(-100);
             if (PlayerState.GetCurrentLife() == 0)
             {
                 StartCoroutine(Die());
             }
-        }
 
         IEnumerator Die()
         {

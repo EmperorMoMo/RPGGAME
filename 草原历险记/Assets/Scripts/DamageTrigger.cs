@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageTrigger : MonoBehaviour
 {
-    public float damage = 100;
+    public float damage = -100;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,6 @@ public class DamageTrigger : MonoBehaviour
     }
     void OnTriggerEnter(Collider collider)
     {
-        PlayerState.ChangeLife(PlayerState.Die());
+        PlayerState.ChangeLife(damage);
     }
 }
