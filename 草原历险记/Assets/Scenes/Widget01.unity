@@ -1319,6 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: -100
+  PI: {fileID: 0}
 --- !u!65 &227018089
 BoxCollider:
   m_ObjectHideFlags: 0
