@@ -18,6 +18,9 @@ public class DamageTrigger : MonoBehaviour
     }
     void OnTriggerEnter(Collider collider)
     {
-        PlayerState.ChangeLife(damage);
+        if (collider.gameObject.tag == "Player")
+        {
+            PlayerState.ChangeLife(damage);
+        }
     }
 }
