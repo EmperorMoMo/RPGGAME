@@ -139,10 +139,10 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-            if (PlayerState.GetCurrentLife() == 0)
-            {
-                StartCoroutine(Die());
-            }
+        if (PlayerState.GetCurrentLife() == 0)
+        {
+            StartCoroutine(Die());
+        }
 
         IEnumerator Die()
         {
