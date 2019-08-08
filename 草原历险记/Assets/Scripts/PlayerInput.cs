@@ -168,6 +168,7 @@ public class PlayerInput : MonoBehaviour
         {
             yield return new WaitForSeconds(1.0f);
             inputEnable = true;
+            anim.SetBool("IsDie", false);
         }
     }
 
