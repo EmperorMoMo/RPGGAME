@@ -13,18 +13,6 @@ public class PlayerInput : MonoBehaviour
     public string keyA;
     public string keyB;
     public string keyC;
-    
-    //public float Dup;
-    //public float Dright;
-    //public float Dmag;
-    //public Vector3 Dvec;
-
-    //public bool run = true;
-
-    //private float targetUp;
-    //private float targetRight;
-    //private float velocityDup;
-    //private float velocityDright;
 
     public float rollSpeed = 6.0f;//物体的移动速度
     public float rotateSpeed = 4.0f;//物体的旋转速度
@@ -35,12 +23,12 @@ public class PlayerInput : MonoBehaviour
 
     public CharacterController controller;
     public Animator anim;
-    public GameObject model;
 
     private bool inputEnable = true;
     private bool isGround = true;
     private bool isJump = true;
     private bool isRun = true;
+    private bool isWalk = true;
 
     private Vector3 rotateDirection = Vector3.zero;
     private Vector3 moveDirection = Vector3.zero;
@@ -60,82 +48,85 @@ public class PlayerInput : MonoBehaviour
         {
             if (inputEnable == true)
             {
-                float h = Input.GetAxis("Horizontal");
-                float v = Input.GetAxis("Vertical");
-                moveDirection = new Vector3(0, 0, v);
-                moveDirection = transform.TransformDirection(moveDirection);
-                moveDirection *= rollSpeed;
-
-                rotateDirection = Vector3.Lerp(rotateDirection, new Vector3(0, h, 0), 1f);
-                float Dmag = Mathf.Sqrt(v * v);
-                float target = (Input.GetKey(keyA) ? 2.0f : 1.0f);
-                anim.SetFloat("forward", Dmag * Mathf.Lerp(anim.GetFloat("forward"), target, 0.25f));
-
-
-                if (timer % 50 == 0 && rollSpeed == 6.0f)
+                if (isWalk == true)
                 {
-                    PlayerState.ChangePower(10.0f);
-                    Debug.Log(PlayerState.GetCurrentPower().ToString());
-                }
+                    float h = Input.GetAxis("Horizontal");
+                    float v = Input.GetAxis("Vertical");
+                    moveDirection = new Vector3(0, 0, v);
+                    moveDirection = transform.TransformDirection(moveDirection);
+                    moveDirection *= rollSpeed;
 
-                if (PlayerState.GetCurrentPower() >= 30)
-                {
-                    isRun = true;
-                }
+                    rotateDirection = Vector3.Lerp(rotateDirection, new Vector3(0, h, 0), 1f);
+                    float Dmag = Mathf.Sqrt(v * v);
+                    float target = (Input.GetKey(keyA) ? 2.0f : 1.0f);
+                    anim.SetFloat("forward", Dmag * Mathf.Lerp(anim.GetFloat("forward"), target, 0.25f));
 
-                if (isRun)
-                {
-                    if (Input.GetKey(keyA) && PlayerState.GetCurrentPower() > 0)
+
+                    if (timer % 50 == 0 && rollSpeed == 6.0f)
                     {
-                        rollSpeed = Mathf.Lerp(rollSpeed, 12.0f, 1.0f);
+                        PlayerState.ChangePower(10.0f);
+                        Debug.Log(PlayerState.GetCurrentPower().ToString());
+                    }
 
-                        if (timer % 50 == 0 && isRun == true&&Input.GetButton("Vertical"))
+                    if (PlayerState.GetCurrentPower() >= 30)
+                    {
+                        isRun = true;
+                    }
+
+                    if (isRun)
+                    {
+                        if (Input.GetKey(keyA) && PlayerState.GetCurrentPower() > 0)
                         {
-                            PlayerState.ChangePower(-10.0f);
-                            Debug.Log(PlayerState.GetCurrentPower().ToString());
+                            rollSpeed = Mathf.Lerp(rollSpeed, 12.0f, 1.0f);
+
+                            if (timer % 50 == 0 && isRun == true&&Input.GetButton("Vertical"))
+                            {
+                                PlayerState.ChangePower(-10.0f);
+                                Debug.Log(PlayerState.GetCurrentPower().ToString());
+                            }
+                        }
+                        else if (PlayerState.GetCurrentPower() == 0 || Input.GetKeyUp(keyA))
+                        {
+                            rollSpeed = Mathf.Lerp(rollSpeed, 6.0f, 1.0f);
+                            isRun = false;
                         }
                     }
-                    else if (PlayerState.GetCurrentPower() == 0 || Input.GetKeyUp(keyA))
+                }
+
+                if (isJump)
+                {
+                    if (Input.GetKeyDown(keyB)&&PlayerState.GetCurrentPower()!=0)
                     {
-                        rollSpeed = Mathf.Lerp(rollSpeed, 6.0f, 1.0f);
-                        isRun = false;
+                        anim.SetBool("IsJump",true);
+                        moveDirection.y = jumpSpeed;
+                        isWalk = false;
+                        PlayerState.ChangePower(-10.0f);
+                    }
+                    else
+                    {
+                        anim.SetBool("IsJump",false);
+                        isWalk = true;
                     }
                 }
-            }
 
-            if (isJump)
-            {
-                if (Input.GetKeyDown(keyB)&&PlayerState.GetCurrentPower()!=0)
+                if (Input.GetKey(keyC))
                 {
-                    anim.SetBool("IsJump",true);
-                    moveDirection.y = jumpSpeed;
-                    inputEnable = false;
-                    PlayerState.ChangePower(-10.0f);
+                    anim.SetBool("IsDuck", true);
+                    rollSpeed = duckSpeed;
+                    controller.height = 1;
+                    controller.center = new Vector3(0, 0.79f, 0);
+                    isJump = false;
+                    isRun = false;
                 }
-                else
+                else if (Input.GetKeyUp(keyC))
                 {
-                    anim.SetBool("IsJump",false);
-                    inputEnable = true;
+                    anim.SetBool("IsDuck", false);
+                    rollSpeed = 6.0f;
+                    controller.height = 2;
+                    controller.center = new Vector3(0, 1.1f, 0);
+                    isJump = true;
+                    isRun = true;
                 }
-            }
-
-            if (Input.GetKey(keyC))
-            {
-                anim.SetBool("IsDuck", true);
-                rollSpeed = duckSpeed;
-                controller.height = 1;
-                controller.center = new Vector3(0, 0.79f, 0);
-                isJump = false;
-                isRun = false;
-            }
-            else if (Input.GetKeyUp(keyC))
-            {
-                anim.SetBool("IsDuck", false);
-                rollSpeed = 6.0f;
-                controller.height = 2;
-                controller.center = new Vector3(0, 1.1f, 0);
-                isJump = true;
-                isRun = true;
             }
         }
 
@@ -146,35 +137,51 @@ public class PlayerInput : MonoBehaviour
         isGround = ((flags & CollisionFlags.Below) != 0);//判断是否在地面，如果在地面，isGround为真，否则为假
     }
 
-    //void Update()
-    //{
-    //    targetUp = (Input.GetKey(keyUp) ? 1.0f : 0.0f) - (Input.GetKey(keyDown) ? 1.0f : 0.0f);
-    //    targetRight = (Input.GetKey(keyRight) ? 1.0f : 0.0f) - (Input.GetKey(keyLeft) ? 1.0f : 0.0f);
-    //    Dup = Mathf.SmoothDamp(Dup, targetUp, ref velocityDup, 0.1f);
-    //    Dright = Mathf.SmoothDamp(Dright, targetRight, ref velocityDright, 0.1f);
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.B))
+        {
+            PlayerState.ChangeLife(-100);
+            if (PlayerState.GetCurrentLife() == 0)
+            {
+                StartCoroutine(Die());
+            }
+        }
 
-    //    Vector2 tempDAxis = SquareToCircle(new Vector2(Dright, Dup));
-    //    float Dright2 = tempDAxis.x;
-    //    float Dup2 = tempDAxis.y;
+        IEnumerator Die()
+        {
+            inputEnable = false;
+            anim.SetBool("IsDie",true);
+            yield return StartCoroutine(waitForDie());
+            HideCharacter();
+            yield return StartCoroutine(waitForOneSeconds());
+            ShowCharacter();
+            PlayerState.ChangeLife(PlayerState.GetMaxLife());
+        }
 
-    //    Dmag = Mathf.Sqrt((Dup * Dup) + (Dright * Dright));
-    //    Dvec = Dright * transform.right + Dup * transform.forward;
+        IEnumerator waitForDie()
+        {
+            yield return new WaitForSeconds(3.5f);
+        }
 
+        IEnumerator waitForOneSeconds()
+        {
+            yield return new WaitForSeconds(1.0f);
+            inputEnable = true;
+        }
+    }
 
-    //    run = Input.GetKey(keyA);
+    void HideCharacter()
+    {
+        GameObject.FindGameObjectWithTag("Body").GetComponent<SkinnedMeshRenderer>().enabled = false;
+        GameObject.FindGameObjectWithTag("Wheels").GetComponent<SkinnedMeshRenderer>().enabled = false;
+    }
 
-
-    //}
-
-    //////修复斜着跑速度变快的BUG
-    //private Vector2 SquareToCircle(Vector2 input)
-    //{
-    //    Vector2 output = Vector2.zero;
-
-    //    output.x = input.x * Mathf.Sqrt(1 - (input.y * input.y) / 2.0f);
-    //    output.y = input.y * Mathf.Sqrt(1 - (input.x * input.x) / 2.0f);
-
-    //    return output;
-    //}
+    void ShowCharacter()
+    {
+        GameObject.FindGameObjectWithTag("Body").GetComponent<SkinnedMeshRenderer>().enabled = true;
+        GameObject.FindGameObjectWithTag("Wheels").GetComponent<SkinnedMeshRenderer>().enabled = true;
+    }
 
 }
+
