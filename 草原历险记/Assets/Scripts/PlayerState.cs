@@ -65,12 +65,4 @@ public static class PlayerState
     public static void SavePoint(Transform trans) {
         saveTran.position = trans.position;
     }
-
-    public static void Resurrection() { 
-        
-    }
-
-    public static void Die() { 
-    
-    }
 }
