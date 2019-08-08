@@ -2677,7 +2677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: 02dc26b51c376a4479d4e3b350e93523, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.68
+      value: 28.57
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: 02dc26b51c376a4479d4e3b350e93523, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7912,6 +7912,63 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1788379425}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1808644314
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+      propertyPath: m_Name
+      value: StationRobotRelay (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 46.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 142.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
 --- !u!1001 &1828080409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8143,6 +8200,52 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1873590610}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1929162571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100038, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43,
+    type: 3}
+  m_PrefabInstance: {fileID: 1808644314}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1929162572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929162571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e653a0846748a774e9ca588c4af4f4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstPt: {fileID: 1929162572}
+--- !u!64 &1929162573
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929162571}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: c8bc3532d29bbc44cbf8fb9c11e8dd43, type: 3}
+--- !u!135 &1929162574
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929162571}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1001 &1950872770
 PrefabInstance:
   m_ObjectHideFlags: 0
