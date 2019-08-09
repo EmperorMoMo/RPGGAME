@@ -58,7 +58,7 @@ public class PlayerInput : MonoBehaviour
 
                     rotateDirection = Vector3.Lerp(rotateDirection, new Vector3(0, h, 0), 1f);
                     float Dmag = Mathf.Sqrt(v * v);
-                    float target = (Input.GetKey(keyA) ? 2.0f : 1.0f);
+                    float target = ((Input.GetKey(keyA) && isRun == true) ? 2.0f : 1.0f);
                     anim.SetFloat("forward", Dmag * Mathf.Lerp(anim.GetFloat("forward"), target, 0.25f));
 
 
@@ -68,7 +68,7 @@ public class PlayerInput : MonoBehaviour
                         Debug.Log(PlayerState.GetCurrentPower().ToString());
                     }
 
-                    if (PlayerState.GetCurrentPower() >= 30)
+                    if (PlayerState.GetCurrentPower() > 0&&Input.GetKeyDown(keyA))
                     {
                         isRun = true;
                     }
@@ -148,6 +148,7 @@ public class PlayerInput : MonoBehaviour
         IEnumerator Die()
         {
             inputEnable = false;
+            rollSpeed = 6.0f;
             anim.SetBool("IsDie",true);
             yield return StartCoroutine(waitForDie());
             HideCharacter();
@@ -155,7 +156,7 @@ public class PlayerInput : MonoBehaviour
             if (CheckPoint.isActivept)
             {
                 controller.transform.position = CheckPoint.isActivept.transform.position;
-                //controller.transform.position = new Vector3(controller.transform.position.x, controller.transform.position.y + 0.5f, controller.transform.position.z);
+                controller.transform.position = new Vector3(controller.transform.position.x, controller.transform.position.y + 0.5f, controller.transform.position.z);
                 controller.enabled = true;
                 ShowCharacter();
             }
@@ -164,7 +165,7 @@ public class PlayerInput : MonoBehaviour
 
         IEnumerator waitForDie()
         {
-            yield return new WaitForSeconds(3.5f);
+            yield return new WaitForSeconds(3.0f);
         }
 
         IEnumerator waitForOneSeconds()
@@ -172,6 +173,10 @@ public class PlayerInput : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             inputEnable = true;
             anim.SetBool("IsDie", false);
+            if (Input.GetKeyDown(keyA))
+            {
+                isRun = true;
+            }
         }
     }
 
