@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EBunny_Status : MonoBehaviour
 {
-    public float health = 10;
+    public float health = 100;
     private bool isDead = false;
     private Animation animation;
     // Start is called before the first frame update
