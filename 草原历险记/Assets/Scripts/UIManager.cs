@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour {
     public Transform startLifePoint;
     public Transform startPowerPoint;
     public Transform endPoint;
+    public Camera cameraUI;
     public GameObject MonsterState;
     public GameObject lifeMoveEffect;
     public GameObject powerMoveEffect;
