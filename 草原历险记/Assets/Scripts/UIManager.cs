@@ -8,29 +8,36 @@ using System;
 public class UIManager : MonoBehaviour {
     public Slider lifeSlider;
     public Slider powerSlider;
+    public Slider monSlider;
     public Text lifePackText;
     public Text powerPackText;
     public Transform startLifePoint;
     public Transform startPowerPoint;
     public Transform endPoint;
+    public Camera cameraUI;
+    public GameObject MonsterState;
     public GameObject lifeMoveEffect;
     public GameObject powerMoveEffect;
 
-    public static float targetLifeValue = 1f;
-    public static float targetPowerValue = 1f;
+    static float targetLifeValue = 1f;
+    static float targetPowerValue = 1f;
+    static float targetMonValue = 1f;
+    static float monMaxLife;
 
     static Transform _startLifePoint;
     static Transform _startPowerPoint;
     static GameObject _lifeMoveEffect;
     static GameObject _powerMoveEffect;
+    static GameObject _mon;
 
-    static GameObject lmf;
     static GameObject pmf;
+    static GameObject lmf;
     void Start() {
         _startLifePoint = startLifePoint;
         _startPowerPoint = startPowerPoint;
         _lifeMoveEffect = lifeMoveEffect;
         _powerMoveEffect = powerMoveEffect;
+        _mon = MonsterState;
     }
 
     void Update() {
@@ -40,6 +47,10 @@ public class UIManager : MonoBehaviour {
 
         if (targetPowerValue != powerSlider.value) {
             powerSlider.value = Mathf.Lerp(powerSlider.value, targetPowerValue, 0.2f);
+        }
+
+        if (targetMonValue != monSlider.value) {
+            monSlider.value = Mathf.Lerp(monSlider.value, targetMonValue, 0.2f);
         }
 
         if (Convert.ToInt32(lifePackText.text.ToString()) != PlayerState.GetLifePack()) {
@@ -90,4 +101,17 @@ public class UIManager : MonoBehaviour {
         pmf = GameObject.Instantiate(_powerMoveEffect, _startPowerPoint);
     }
 
+    public static void BindMonstarUI(float currentLife, float maxLife) {
+        monMaxLife = maxLife;
+        targetMonValue = currentLife / monMaxLife;
+        _mon.SetActive(true);
+    }
+
+    public static void UpdataMonLifeUI(float currentLife) {
+        targetMonValue = currentLife / monMaxLife;
+    }
+
+    public static void UnboundUI() {
+        _mon.SetActive(false);
+    }
 }
