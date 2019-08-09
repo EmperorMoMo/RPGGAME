@@ -23,6 +23,9 @@ public class PlayerInput : MonoBehaviour
 
     public CharacterController controller;
     public Animator anim;
+    public AudioClip death;
+    public AudioClip hit;
+    private AudioSource _audioSource;
 
     private bool inputEnable = true;
     private bool isGround = true;
@@ -38,6 +41,7 @@ public class PlayerInput : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -141,6 +145,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (PlayerState.GetCurrentLife() == 0)
         {
+            StartCoroutine(deathAudioPlay());
             StartCoroutine(Die());
             controller.enabled = false;
         }
@@ -178,6 +183,14 @@ public class PlayerInput : MonoBehaviour
                 isRun = true;
             }
         }
+
+        IEnumerator deathAudioPlay()
+        {
+            _audioSource.clip = death;
+            _audioSource.Play();
+            yield return new WaitForSeconds(0);
+        }
+
     }
 
     void HideCharacter()
