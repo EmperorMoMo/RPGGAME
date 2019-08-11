@@ -161,7 +161,7 @@ public class PlayerInput : MonoBehaviour
             if (CheckPoint.isActivept)
             {
                 controller.transform.position = CheckPoint.isActivept.transform.position;
-                controller.transform.position = new Vector3(controller.transform.position.x, controller.transform.position.y + 0.5f, controller.transform.position.z);
+                //controller.transform.position = new Vector3(controller.transform.position.x, controller.transform.position.y + 0.5f, controller.transform.position.z);
                 controller.enabled = true;
                 ShowCharacter();
             }
