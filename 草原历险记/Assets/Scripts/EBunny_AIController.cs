@@ -32,7 +32,7 @@ public class EBunny_AIController : MonoBehaviour
         animation.wrapMode = WrapMode.Loop;
         animation["WolfBaby-Death"].wrapMode = WrapMode.Once;
         animation["WolfBaby-Death"].layer = 5;
-        animation["WolfBaby-TakeDamage1"].layer = 3;
+        animation["WolfBaby-TakeDamage2"].layer = 3;
         animation["WolfBaby-Attack1"].layer = 1;
         StartCoroutine (InitEnemy());
     }

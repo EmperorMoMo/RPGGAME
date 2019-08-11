@@ -23,8 +23,8 @@ public class EBunny_Status : MonoBehaviour
         if (health <= 0)
             return;
         health -= damage;
-        animation.Play("WolfBaby-TakeDamage1");
-        if(health<=0&&!isDead)
+        animation.Play("WolfBaby-TakeDamage2");
+        if (health<=0&&!isDead)
         {
             health = 0;
             isDead=true;
