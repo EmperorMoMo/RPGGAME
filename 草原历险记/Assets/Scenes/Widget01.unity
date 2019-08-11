@@ -3205,6 +3205,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &575908418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575908412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96cbd190b142e354fba9526c14026bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pi: {fileID: 0}
+  anim: {fileID: 0}
+  attackTime: 1
+  attackPosition: {x: 0, y: 1, z: 0}
+  attackRadius: 3
+  damage: 10
 --- !u!114 &583111821 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6808187140915685735, guid: 2afc0fe538e12fd46bdc15710e02a4b9,
@@ -6354,10 +6372,6 @@ PrefabInstance:
     - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 14300000, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_Height
-      value: 0.88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d480a93780549e547b0563597f4e240e, type: 3}
