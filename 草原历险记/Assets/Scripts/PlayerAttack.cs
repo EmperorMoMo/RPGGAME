@@ -1,17 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class PlayerAttack : MonoBehaviour
 {
     public PlayerInput pi;
     public Animator anim;
+    public UIManager UI;
 
     public float attackTime = 1.0f;
     public Vector3 attackPosition = new Vector3(0, 1, 0);
     public float attackRadius = 3.0f;
-    public float damage = 10f;
 
+    private float damage = 0f;
     private float timer = 0.0f;
     private bool isBusy = false;
     private Vector3 ourLocation;
@@ -22,12 +25,14 @@ public class PlayerAttack : MonoBehaviour
     {
         pi = GetComponent<PlayerInput>();
         anim = GetComponent<Animator>();
+        UI = GetComponent<UIManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
+        damage = random(damage);
 
         if (!isBusy && Input.GetKeyDown(KeyCode.J) && timer > attackTime)
         {
@@ -62,4 +67,13 @@ public class PlayerAttack : MonoBehaviour
 
         isBusy = false;
     }
+
+    private float random(float value)
+    {
+        var seed = Guid.NewGuid().GetHashCode();
+        Random r=new Random(seed);
+        value = r.Next(30, 50);
+        return value;
+    }
+
 }
