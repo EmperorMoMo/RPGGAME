@@ -20,6 +20,7 @@ public class PlayerInput : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float duckSpeed = 3.0f;
     public float timer = 0f;
+    //public float damage=0.0f;
 
     public CharacterController controller;
     public Animator anim;
@@ -69,7 +70,7 @@ public class PlayerInput : MonoBehaviour
                     if (timer % 50 == 0 && rollSpeed == 6.0f)
                     {
                         PlayerState.ChangePower(10.0f);
-                        Debug.Log(PlayerState.GetCurrentPower().ToString());
+                        //Debug.Log(PlayerState.GetCurrentPower().ToString());
                     }
 
                     if (PlayerState.GetCurrentPower() > 0&&Input.GetKeyDown(keyA))
@@ -86,7 +87,7 @@ public class PlayerInput : MonoBehaviour
                             if (timer % 50 == 0 && isRun == true&&Input.GetButton("Vertical"))
                             {
                                 PlayerState.ChangePower(-10.0f);
-                                Debug.Log(PlayerState.GetCurrentPower().ToString());
+                                //Debug.Log(PlayerState.GetCurrentPower().ToString());
                             }
                         }
                         else if (PlayerState.GetCurrentPower() == 0 || Input.GetKeyUp(keyA))
@@ -161,7 +162,7 @@ public class PlayerInput : MonoBehaviour
             if (CheckPoint.isActivept)
             {
                 controller.transform.position = CheckPoint.isActivept.transform.position;
-                controller.transform.position = new Vector3(controller.transform.position.x, controller.transform.position.y + 0.5f, controller.transform.position.z);
+                //controller.transform.position = new Vector3(controller.transform.position.x, controller.transform.position.y + 0.5f, controller.transform.position.z);
                 controller.enabled = true;
                 ShowCharacter();
             }
@@ -203,6 +204,12 @@ public class PlayerInput : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("Body").GetComponent<SkinnedMeshRenderer>().enabled = true;
         GameObject.FindGameObjectWithTag("Wheels").GetComponent<SkinnedMeshRenderer>().enabled = true;
+    }
+
+    void ApplyDamage(float damage)
+    {
+        PlayerState.ChangeLife(-damage);
+        Debug.Log("生命值：" + PlayerState.GetCurrentLife().ToString());
     }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EBunny_AIController : MonoBehaviour
 {
-    public float damage = 10f;//怪物伤害值
+    public float damage = 10;//怪物伤害值
     public float attackMoveSpeed = 5.0f;//攻击时的移动速度
     public float attackDistance = 15;//巡逻范围
     public float walkSpeed = 3.0f;
