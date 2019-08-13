@@ -3219,10 +3219,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pi: {fileID: 0}
   anim: {fileID: 0}
+  UI: {fileID: 0}
   attackTime: 1
   attackPosition: {x: 0, y: 1, z: 0}
   attackRadius: 3
-  damage: 10
 --- !u!114 &583111821 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6808187140915685735, guid: 2afc0fe538e12fd46bdc15710e02a4b9,
@@ -6331,15 +6331,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 62.48
+      value: 123.8
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 17.4
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 59.01
+      value: 46.7
       objectReference: {fileID: 0}
     - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6373,6 +6373,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 917582312, guid: d480a93780549e547b0563597f4e240e, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 575908413}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1 &1219983800 stripped
