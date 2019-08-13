@@ -32,7 +32,9 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        damage = random(damage);
+        damage=random(damage);
+
+
 
         if (!isBusy && Input.GetKeyDown(KeyCode.J) && timer > attackTime)
         {

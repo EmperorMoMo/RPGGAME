@@ -208,8 +208,16 @@ public class PlayerInput : MonoBehaviour
 
     void ApplyDamage(float damage)
     {
+        anim.SetBool("OnHit", true);
         PlayerState.ChangeLife(-damage);
+        StartCoroutine(waitTime());
+        anim.SetBool("OnHit", false);
         Debug.Log("生命值：" + PlayerState.GetCurrentLife().ToString());
+    }
+
+    IEnumerator waitTime()
+    {
+        yield return new WaitForSeconds(1.0f);
     }
 
 }
