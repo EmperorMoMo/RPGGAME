@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-
-[Serializable]
 public class UIManager : MonoBehaviour {
     public Slider lifeSlider;
     public Slider powerSlider;
@@ -14,7 +12,6 @@ public class UIManager : MonoBehaviour {
     public Transform startLifePoint;
     public Transform startPowerPoint;
     public Transform endPoint;
-    public Camera cameraUI;
     public GameObject MonsterState;
     public GameObject lifeMoveEffect;
     public GameObject powerMoveEffect;
@@ -32,12 +29,16 @@ public class UIManager : MonoBehaviour {
 
     static GameObject pmf;
     static GameObject lmf;
+
+    public static List<GameObject> enemys = new List<GameObject>();
+    public Transform player;
     void Start() {
         _startLifePoint = startLifePoint;
         _startPowerPoint = startPowerPoint;
         _lifeMoveEffect = lifeMoveEffect;
         _powerMoveEffect = powerMoveEffect;
         _mon = MonsterState;
+
     }
 
     void Update() {
@@ -68,6 +69,8 @@ public class UIManager : MonoBehaviour {
         if (pmf != null) {
             pmf.transform.position = Vector3.MoveTowards(pmf.transform.position, endPoint.position, 80 * Time.deltaTime);
         }
+
+        ClosestDistance(player);
     }
     public void ButtonPack_Click(string pack) {
         switch (pack) { 
@@ -112,6 +115,40 @@ public class UIManager : MonoBehaviour {
     }
 
     public static void UnboundUI() {
-        _mon.SetActive(false);
+        
+            _mon.SetActive(false);
+        
+    }
+
+    static void ClosestDistance(Transform _player) {
+        float closest = 100f;
+        float distance = 0f;
+        int index = -1;
+
+        if (enemys.Count == 0) {
+            return;
+        }
+
+        for (int i = 0; i < enemys.Count; i++) {
+            distance = Vector3.Distance(_player.position, enemys[i].transform.position);
+            if (distance < closest) {
+                closest = distance;
+                    index = i;
+            }
+        }
+
+        
+        if (Vector3.Distance(enemys[index].transform.position, _player.position) > 10 || enemys[index].GetComponent<EBunny_Status>().health == 0) {
+            if (_mon.gameObject.activeSelf != false) {
+                UnboundUI();
+                closest = 100f;
+                distance = 0f;
+                index = -1;
+                Debug.Log("解绑");
+            }
+        } else {
+            BindMonstarUI(enemys[index].GetComponent<EBunny_Status>().health, 100);
+            UpdataMonLifeUI(enemys[index].GetComponent<EBunny_Status>().health);
+        }
     }
 }

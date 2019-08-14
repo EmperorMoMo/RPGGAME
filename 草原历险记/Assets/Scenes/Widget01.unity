@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &77587265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1662,7 +1662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &289476286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2214,12 +2214,12 @@ MonoBehaviour:
   startLifePoint: {fileID: 1281739248}
   startPowerPoint: {fileID: 298820946}
   endPoint: {fileID: 1871562098}
-  cameraUI: {fileID: 0}
   MonsterState: {fileID: 904442832}
   lifeMoveEffect: {fileID: 1499773230068161181, guid: 93b52899f34cc5e43961449b2a39f9c3,
     type: 3}
   powerMoveEffect: {fileID: 1499773230068161181, guid: 6c8e7357f1db25a4bb83c7b9fc915f54,
     type: 3}
+  player: {fileID: 575908413}
 --- !u!4 &335473391
 Transform:
   m_ObjectHideFlags: 0
@@ -2507,7 +2507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1 &457622528
 GameObject:
   m_ObjectHideFlags: 0
@@ -2552,7 +2552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &478568122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4257,7 +4257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &748641941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4723,7 +4723,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876857344}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &876857347
 Camera:
   m_ObjectHideFlags: 0
@@ -4816,7 +4816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &904442831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5952,7 +5952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &1153396575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6318,73 +6318,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1212703444}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1219983799
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_Name
-      value: testMonster
-      objectReference: {fileID: 0}
-    - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 123.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 17.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 46.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.09632352
-      objectReference: {fileID: 0}
-    - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99535006
-      objectReference: {fileID: 0}
-    - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 11.055
-      objectReference: {fileID: 0}
-    - target: {fileID: 400064, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 917582312, guid: d480a93780549e547b0563597f4e240e, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 575908413}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d480a93780549e547b0563597f4e240e, type: 3}
---- !u!1 &1219983800 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1219983799}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1223777163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6579,7 +6512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &1238857473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6699,7 +6632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &1281739247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6879,7 +6812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &1331315454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7153,7 +7086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!114 &1343763836 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2830471080568423943, guid: 1779fce0df969f84f8c4fecc979532ab,
@@ -7676,7 +7609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &1561616565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8788,7 +8721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &1788379425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9073,7 +9006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &1858046350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9193,7 +9126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!224 &1871562098 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6808187141143541587, guid: 2afc0fe538e12fd46bdc15710e02a4b9,
@@ -9825,7 +9758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1 &2029030953
 GameObject:
   m_ObjectHideFlags: 0
@@ -9870,7 +9803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &2037192784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10126,7 +10059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRange: 40
-  enemy: {fileID: 1219983800}
+  enemy: {fileID: 100064, guid: d480a93780549e547b0563597f4e240e, type: 3}
 --- !u!1001 &2062643420
 PrefabInstance:
   m_ObjectHideFlags: 0

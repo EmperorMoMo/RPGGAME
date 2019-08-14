@@ -37,6 +37,14 @@ public class EBunny_Status : MonoBehaviour
         animation.Play("WolfBaby-Death");
         Destroy(this.GetComponent<EBunny_AIController>());
         yield return new WaitForSeconds(2.0f);
+
+        for (int i = 0; i < UIManager.enemys.Count; i++) {
+            if (UIManager.enemys[i] == this.gameObject) {
+                UIManager.enemys.Remove(this.gameObject);
+                Debug.Log("Die And Remove");
+            }
+        }
+
         Destroy(this.gameObject);
     }
     public bool IsDead()

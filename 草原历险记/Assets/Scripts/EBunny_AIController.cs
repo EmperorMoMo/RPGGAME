@@ -20,9 +20,15 @@ public class EBunny_AIController : MonoBehaviour
     private CharacterController characterController;
     private Animation animation;
     private float lastAttackTime=0;
+
     // Start is called before the first frame update
     void Start()
     {
+        //******
+        //Author By Liu 
+        target = GameObject.Find("widget").transform;
+        //******
+
         characterController = GetComponent<CharacterController>();
         animation = GetComponent<Animation>();
         if (!target)

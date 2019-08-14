@@ -11,6 +11,7 @@ public class Enemy_RespawnPoint : MonoBehaviour
     private bool isOutsideRange = true;//是否在怪物出生点的外面
     private Vector3 distanceToPlayer;//怪物与角色的距离
     // Start is called before the first frame update
+
     void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
@@ -22,13 +23,29 @@ public class Enemy_RespawnPoint : MonoBehaviour
         distanceToPlayer = transform.position - target.position;
         if(distanceToPlayer.magnitude<spawnRange)//说明主角已经进入到怪物出生点范围
         {
-            if(!currentEnemy)
+            if (!currentEnemy) {
            currentEnemy = Instantiate(enemy,transform.position, transform.rotation) as GameObject;
+
+            //******
+            //Author By Liu 
+            UIManager.enemys.Add(currentEnemy);
+            Debug.Log(UIManager.enemys.Count);
+            //******
+            }
+
             isOutsideRange = false;
         }
         else
         {
             if(currentEnemy)
+
+                for (int i = 0; i < UIManager.enemys.Count; i++) {
+                    if (UIManager.enemys[i] == currentEnemy) {
+                        UIManager.enemys.Remove(currentEnemy);
+                        Debug.Log("Far And Remove");
+                    }
+                }
+
                 Destroy(currentEnemy);
         }
         isOutsideRange = true;
